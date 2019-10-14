@@ -1,14 +1,15 @@
 package com.lambdaschool.school.controller;
 
+import com.lambdaschool.school.model.Instructor;
 import com.lambdaschool.school.service.InstructorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/instructors")
@@ -22,5 +23,11 @@ public class InstructorController {
 	public ResponseEntity<?> getInstructors(){
 		logger.info("GET /instructors/instructors");
 		return new ResponseEntity<>(instructorService.findAll(), HttpStatus.OK);
+	}
+
+	@PostMapping(value = "/instructor", consumes = {"application/json"})
+	public ResponseEntity<?> addInstructor(@Valid @RequestBody Instructor instructor){
+		logger.info("POST /instructors/instructor");
+		return new ResponseEntity<>(instructorService.save(instructor), HttpStatus.CREATED);
 	}
 }

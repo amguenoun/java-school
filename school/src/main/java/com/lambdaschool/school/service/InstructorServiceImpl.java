@@ -20,4 +20,11 @@ public class InstructorServiceImpl implements InstructorService
         instructrepos.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
+
+    @Override
+    public Instructor save(Instructor instructor) {
+        Instructor newInstructor = new Instructor();
+        newInstructor.setInstructname(instructor.getInstructname());
+        return instructrepos.save(newInstructor);
+    }
 }
