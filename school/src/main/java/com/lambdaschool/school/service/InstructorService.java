@@ -10,4 +10,6 @@ public interface InstructorService {
 	Instructor save(Instructor instructor);
 
 	Instructor update(Instructor instructor, long id);
+
+	void delete(long id);
 }

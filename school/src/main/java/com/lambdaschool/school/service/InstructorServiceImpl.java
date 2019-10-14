@@ -37,4 +37,14 @@ public class InstructorServiceImpl implements InstructorService
         }
         return instructrepos.save(holder);
     }
+
+    @Override
+    public void delete(long id) {
+        if(instructrepos.findById(id).isPresent()){
+        instructrepos.deleteById(id);
+        }
+        else{
+            throw new ResourceNotFoundException(Long.toString(id));
+        }
+    }
 }
