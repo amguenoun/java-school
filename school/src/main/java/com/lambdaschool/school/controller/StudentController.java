@@ -25,7 +25,7 @@ public class StudentController
     private StudentService studentService;
 
     // Please note there is no way to add students to course yet!
-    private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
+    private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
 
 
     @GetMapping(value = "/students", produces = {"application/json"})

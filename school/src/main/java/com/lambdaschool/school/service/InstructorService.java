@@ -1,5 +1,9 @@
 package com.lambdaschool.school.service;
 
-public interface InstructorService
-{
+import com.lambdaschool.school.model.Instructor;
+
+import java.util.List;
+
+public interface InstructorService {
+	List<Instructor> findAll();
 }
