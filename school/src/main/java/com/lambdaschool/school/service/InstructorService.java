@@ -8,4 +8,6 @@ public interface InstructorService {
 	List<Instructor> findAll();
 
 	Instructor save(Instructor instructor);
+
+	Instructor update(Instructor instructor, long id);
 }

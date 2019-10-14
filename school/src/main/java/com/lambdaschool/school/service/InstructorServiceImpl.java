@@ -1,5 +1,6 @@
 package com.lambdaschool.school.service;
 
+import com.lambdaschool.school.exceptions.ResourceNotFoundException;
 import com.lambdaschool.school.model.Instructor;
 import com.lambdaschool.school.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,14 @@ public class InstructorServiceImpl implements InstructorService
         Instructor newInstructor = new Instructor();
         newInstructor.setInstructname(instructor.getInstructname());
         return instructrepos.save(newInstructor);
+    }
+
+    @Override
+    public Instructor update(Instructor instructor, long id) throws ResourceNotFoundException {
+        Instructor holder = instructrepos.findById(id).orElseThrow(() -> new ResourceNotFoundException(Long.toString(id)));
+        if(instructor.getInstructname() != null){
+            holder.setInstructname(instructor.getInstructname());
+        }
+        return instructrepos.save(holder);
     }
 }

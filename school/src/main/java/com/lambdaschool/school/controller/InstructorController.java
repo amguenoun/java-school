@@ -30,4 +30,10 @@ public class InstructorController {
 		logger.info("POST /instructors/instructor");
 		return new ResponseEntity<>(instructorService.save(instructor), HttpStatus.CREATED);
 	}
+
+	@PutMapping(value = "/instructor/{instructorid}", consumes = {"application/json"})
+	public ResponseEntity<?> updateInstructor(@RequestBody Instructor instructor, @PathVariable long instructorid){
+		logger.info("POST /instructors/instructor/" + instructorid);
+		return new ResponseEntity<>(instructorService.update(instructor, instructorid), HttpStatus.OK);
+	}
 }
