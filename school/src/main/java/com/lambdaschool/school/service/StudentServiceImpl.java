@@ -1,5 +1,6 @@
 package com.lambdaschool.school.service;
 
+import com.lambdaschool.school.exceptions.ResourceNotFoundException;
 import com.lambdaschool.school.model.Course;
 import com.lambdaschool.school.model.Student;
 import com.lambdaschool.school.repository.StudentRepository;
@@ -26,10 +27,10 @@ public class StudentServiceImpl implements StudentService
     }
 
     @Override
-    public Student findStudentById(long id) throws EntityNotFoundException
+    public Student findStudentById(long id) throws ResourceNotFoundException
     {
         return studrepos.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
+                .orElseThrow(() -> new ResourceNotFoundException(Long.toString(id)));
     }
 
     @Override
